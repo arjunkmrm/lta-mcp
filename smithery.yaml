@@ -1,19 +1,15 @@
-# Smithery configuration file: https://smithery.ai/docs/build/project-config
-
+# Smithery configuration file: https://smithery.ai/docs/build/project-config/smithery-yaml
+runtime: "typescript"
 startCommand:
-  type: stdio
-  commandFunction:
-    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
-    |-
-    (config) => ({ command: 'node', args: ['dist/index.js'], env: { LTA_API_KEY: config.ltaApiKey } })
+  type: "http"
+  # JSON Schema defining the configuration options for the MCP.
   configSchema:
-    # JSON Schema defining the configuration options for the MCP.
-    type: object
+    type: "object"
     required:
-      - ltaApiKey
+      - "ltaApiKey"
     properties:
       ltaApiKey:
-        type: string
-        description: LTA DataMall API key
+        type: "string"
+        description: "LTA DataMall API key"
   exampleConfig:
-    ltaApiKey: YOUR_LTA_API_KEY
+    ltaApiKey: "YOUR_LTA_API_KEY"
